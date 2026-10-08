@@ -1,4 +1,20 @@
+<div align="center">
+  
+  # 🟣 AURA Assistant
+  ### Интеллектуальный голосовой ассистент для Windows с визуальным программированием
+  
+  <a href="https://github.com/Nexus1889/aura-assistant/releases"><img src="https://img.shields.io/badge/version-0.4.4-8b5cf6.svg" alt="Version"></a>
+  <a href="https://windows.net"><img src="https://img.shields.io/badge/platform-Windows%2010%2F11-0078D6.svg" alt="Platform"></a>
+  <a href="https://t.me/aura_support"><img src="https://img.shields.io/badge/support-Telegram-26A5E4.svg" alt="Telegram"></a>
 
+  <br><br>
+  <a href="INSTALL.md"><strong>📦 Установка</strong></a> • 
+  <a href="CUSTOM-COMMANDS.md"><strong>🧩 Конструктор</strong></a> • 
+  <a href="COMMANDS.md"><strong>🎤 Команды</strong></a> • 
+  <a href="FAQ.md"><strong>❓ FAQ</strong></a>
+</div>
+
+---
 
 ---
 ## 💡 Что такое AURA?
