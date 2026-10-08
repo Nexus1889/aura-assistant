@@ -1,13 +1,4 @@
-<div align="center">
-  <h1>AURA Assistant</h1>
-  <p><strong>Голосовой ассистент для Windows с визуальным программированием.</strong></p>
-  <a href="https://github.com/Nexus1889/aura-assistant/releases"><img src="https://img.shields.io/badge/version-0.4.4-blue.svg" alt="Version"></a>
-  <a href="https://windows.net"><img src="https://img.shields.io/badge/platform-Windows%2010%2F11-0078D6.svg" alt="Platform"></a>
-  <br><br>
-  <a href="INSTALL.md"><strong>📦 Установка</strong></a> • 
-  <a href="CUSTOM-COMMANDS.md"><strong>🧩 Конструктор</strong></a> • 
-  <a href="FAQ.md"><strong>❓ FAQ</strong></a>
-</div>
+
 
 ---
 ## 💡 Что такое AURA?
