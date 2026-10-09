@@ -8,7 +8,6 @@
     <EnableWindowsTargeting>true</EnableWindowsTargeting>
     <RootNamespace>AURA.App</RootNamespace>
     <AssemblyName>AURA Assistant</AssemblyName>
-    <ApplicationIcon>Assets\aura-icon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>

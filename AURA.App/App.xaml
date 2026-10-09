@@ -13,6 +13,7 @@
             <SolidColorBrush x:Key="TextPrimaryBrush" Color="#F8FAFC" />
             <SolidColorBrush x:Key="TextSecondaryBrush" Color="#CBD5E1" />
             <SolidColorBrush x:Key="TextMutedBrush" Color="#94A3B8" />
+
             <Style TargetType="Button">
                 <Setter Property="Cursor" Value="Hand" />
                 <Setter Property="Foreground" Value="White" />
@@ -23,7 +24,9 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="Button">
-                            <Border Background="{TemplateBinding Background}" CornerRadius="12" Padding="{TemplateBinding Padding}">
+                            <Border Background="{TemplateBinding Background}"
+                                    CornerRadius="12"
+                                    Padding="{TemplateBinding Padding}">
                                 <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                             </Border>
                         </ControlTemplate>

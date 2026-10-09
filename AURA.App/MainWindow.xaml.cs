@@ -1,157 +1,59 @@
-<Window x:Class="AURA.App.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="AURA Assistant"
-        Width="1280"
-        Height="760"
-        MinWidth="980"
-        MinHeight="640"
-        WindowStartupLocation="CenterScreen"
-        Background="#0F172A"
-        Foreground="#F8FAFC"
-        FontFamily="Segoe UI">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="260" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
+using System;
+using System.Collections.ObjectModel;
+using System.Windows;
+using System.Windows.Media;
 
-        <Border Grid.Column="0" Background="#111827" BorderBrush="#1F2937" BorderThickness="0,0,1,0">
-            <StackPanel Margin="24">
-                <Border Width="72" Height="72" CornerRadius="22" Background="#8B5CF6" BorderBrush="#A78BFA" BorderThickness="2">
-                    <Grid>
-                        <Ellipse Fill="#C4B5FD" Opacity="0.25" />
-                        <Path Data="M12,22 L34,6 L56,22 L44,22 L44,50 L24,50 L24,22 Z" Fill="White" Stretch="Uniform" />
-                    </Grid>
-                </Border>
+namespace AURA.App;
 
-                <TextBlock Margin="0,18,0,0" FontSize="28" FontWeight="Bold" Text="AURA" />
-                <TextBlock FontSize="18" Foreground="#CBD5E1" Text="Assistant" />
+public partial class MainWindow : Window
+{
+    private bool isListening;
+    private readonly ObservableCollection<string> log = new();
 
-                <StackPanel Margin="0,32,0,0">
-                    <Button Height="44" Margin="0,0,0,8" Background="#1F2937" Content="Главный экран" />
-                    <Button Height="44" Margin="0,0,0,8" Background="#1F2937" Content="Голос" />
-                    <Button Height="44" Margin="0,0,0,8" Background="#1F2937" Content="Команды" />
-                    <Button Height="44" Margin="0,0,0,8" Background="#1F2937" Content="Настройки" Click="OpenSettings_Click" />
-                </StackPanel>
+    public MainWindow()
+    {
+        InitializeComponent();
+        CommandLogList.ItemsSource = log;
+        AddLog("Приложение запущено.");
+        AddLog("Готов к локальному управлению Windows.");
+    }
 
-                <Border Margin="0,32,0,0" Padding="16" CornerRadius="16" Background="#1E293B">
-                    <StackPanel>
-                        <TextBlock Foreground="#94A3B8" Text="Статус" FontSize="12" />
-                        <TextBlock x:Name="StatusText" Margin="0,8,0,0" FontSize="18" FontWeight="SemiBold" Text="Ожидание" />
-                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                            <Ellipse x:Name="StatusIndicator" Width="10" Height="10" Fill="#22C55E" />
-                            <TextBlock Margin="8,0,0,0" Foreground="#CBD5E1" Text="Локальный режим" />
-                        </StackPanel>
-                    </StackPanel>
-                </Border>
-            </StackPanel>
-        </Border>
+    private void ToggleListening_Click(object sender, RoutedEventArgs e)
+    {
+        isListening = !isListening;
 
-        <Grid Grid.Column="1" Margin="28">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
+        ToggleListeningButton.Content = isListening ? "Остановить прослушивание" : "Запустить прослушивание";
+        StatusText.Text = isListening ? "Слушаю" : "Ожидание";
+        StatusIndicator.Fill = isListening
+            ? new SolidColorBrush(Color.FromRgb(34, 197, 94))
+            : new SolidColorBrush(Color.FromRgb(148, 163, 184));
 
-            <Border Grid.Row="0" Padding="24" CornerRadius="24" Background="#111827" BorderBrush="#1F2937" BorderThickness="1">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="Auto" />
-                    </Grid.ColumnDefinitions>
+        AddLog(isListening ? "Прослушивание активировано." : "Прослушивание остановлено.");
+    }
 
-                    <StackPanel>
-                        <TextBlock Foreground="#94A3B8" FontSize="12" Text="AURA / Голосовой помощник" />
-                        <TextBlock Margin="0,8,0,0" FontSize="34" FontWeight="Bold" Text="Готов к работе" />
-                        <TextBlock Margin="0,6,0,0" FontSize="15" Foreground="#CBD5E1" Text="Слушаю команды, управляю окнами, запускаю сценарии и помогаю работать быстрее." />
-                    </StackPanel>
+    private void OpenSettings_Click(object sender, RoutedEventArgs e)
+    {
+        AddLog("Открываю настройки AURA.");
+        StatusText.Text = "Настройки";
+    }
 
-                    <Button Grid.Column="1"
-                            x:Name="ToggleListeningButton"
-                            Width="220"
-                            Height="54"
-                            Background="#8B5CF6"
-                            Content="Запустить прослушивание"
-                            Click="ToggleListening_Click" />
-                </Grid>
-            </Border>
+    private void RunBrowserCommand_Click(object sender, RoutedEventArgs e)
+    {
+        AddLog("Выполняю команду: открыть браузер.");
+    }
 
-            <Grid Grid.Row="1" Margin="0,20,0,0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
+    private void RunWorkModeCommand_Click(object sender, RoutedEventArgs e)
+    {
+        AddLog("Запускаю рабочий режим AURA.");
+    }
 
-                <Border Grid.Column="0" Margin="0,0,12,0" Padding="18" CornerRadius="20" Background="#111827" BorderBrush="#1F2937" BorderThickness="1">
-                    <StackPanel>
-                        <TextBlock Foreground="#94A3B8" Text="Команды" />
-                        <TextBlock Margin="0,10,0,0" FontSize="30" FontWeight="Bold" Text="281" />
-                        <TextBlock Margin="0,6,0,0" Foreground="#CBD5E1" Text="доступно из коробки" />
-                    </StackPanel>
-                </Border>
+    private void CreateNoteCommand_Click(object sender, RoutedEventArgs e)
+    {
+        AddLog("Создаю заметку и сохраняю в рабочую папку.");
+    }
 
-                <Border Grid.Column="1" Margin="0,0,12,0" Padding="18" CornerRadius="20" Background="#111827" BorderBrush="#1F2937" BorderThickness="1">
-                    <StackPanel>
-                        <TextBlock Foreground="#94A3B8" Text="ИИ-движок" />
-                        <TextBlock Margin="0,10,0,0" FontSize="30" FontWeight="Bold" Text="Brain v4" />
-                        <TextBlock Margin="0,6,0,0" Foreground="#CBD5E1" Text="локальный и облачный режим" />
-                    </StackPanel>
-                </Border>
-
-                <Border Grid.Column="2" Padding="18" CornerRadius="20" Background="#111827" BorderBrush="#1F2937" BorderThickness="1">
-                    <StackPanel>
-                        <TextBlock Foreground="#94A3B8" Text="Приватность" />
-                        <TextBlock Margin="0,10,0,0" FontSize="30" FontWeight="Bold" Text="100%" />
-                        <TextBlock Margin="0,6,0,0" Foreground="#CBD5E1" Text="данные остаются на ПК" />
-                    </StackPanel>
-                </Border>
-            </Grid>
-
-            <Grid Grid.Row="2" Margin="0,20,0,0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*" />
-                    <ColumnDefinition Width="1.2*" />
-                </Grid.ColumnDefinitions>
-
-                <Border Grid.Column="0" Padding="20" CornerRadius="24" Background="#111827" BorderBrush="#1F2937" BorderThickness="1">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="*" />
-                        </Grid.RowDefinitions>
-
-                        <TextBlock FontSize="22" FontWeight="SemiBold" Text="Журнал команд" />
-                        <ListBox x:Name="CommandLogList"
-                                 Grid.Row="1"
-                                 Margin="0,16,0,0"
-                                 Background="#0B1220"
-                                 BorderThickness="0"
-                                 Foreground="#E2E8F0" />
-                    </Grid>
-                </Border>
-
-                <StackPanel Grid.Column="1" Margin="20,0,0,0">
-                    <Border Padding="18" CornerRadius="24" Background="#111827" BorderBrush="#1F2937" BorderThickness="1">
-                        <StackPanel>
-                            <TextBlock FontSize="20" FontWeight="SemiBold" Text="Быстрые действия" />
-                            <Button Margin="0,16,0,8" Height="44" Background="#1F2937" Content="Открыть браузер" Click="RunBrowserCommand_Click" />
-                            <Button Margin="0,0,0,8" Height="44" Background="#1F2937" Content="Старт рабочего режима" Click="RunWorkModeCommand_Click" />
-                            <Button Margin="0,0,0,8" Height="44" Background="#1F2937" Content="Создать заметку" Click="CreateNoteCommand_Click" />
-                        </StackPanel>
-                    </Border>
-
-                    <Border Margin="0,18,0,0" Padding="18" CornerRadius="24" Background="#111827" BorderBrush="#1F2937" BorderThickness="1">
-                        <StackPanel>
-                            <TextBlock FontSize="20" FontWeight="SemiBold" Text="Помощь" />
-                            <TextBlock Margin="0,10,0,0" Foreground="#CBD5E1" Text="Пример команды: 'Аура, открой Telegram'" />
-                            <TextBlock Margin="0,8,0,0" Foreground="#CBD5E1" Text="Чтобы запустить задачу — нажмите кнопку прослушивания." />
-                        </StackPanel>
-                    </Border>
-                </StackPanel>
-            </Grid>
-        </Grid>
-    </Grid>
-</Window>
+    private void AddLog(string message)
+    {
+        log.Insert(0, $"{DateTime.Now:HH:mm:ss} — {message}");
+    }
+}
