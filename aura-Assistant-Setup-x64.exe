@@ -1,0 +1,8 @@
+This is a placeholder for the Aura Assistant Setup executable.
+For a real .exe file, you would need to:
+1. Build the application using a compiler (e.g., Visual Studio, MinGW)
+2. Package it with an installer framework (e.g., NSIS, Inno Setup, WiX)
+3. Sign it with a code signing certificate
+4. Upload the binary to the repository or a release page
+
+This text file is a temporary placeholder and should be replaced with the actual binary executable.
