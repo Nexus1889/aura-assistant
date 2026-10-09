@@ -18,7 +18,7 @@
 
         <Border Grid.Column="0" Background="#111827" BorderBrush="#1F2937" BorderThickness="0,0,1,0">
             <StackPanel Margin="24">
-                <Border Width="72" Height="72" CornerRadius="22" Background="#8B5CF6" BorderBrush="#A78BFA" BorderThickness="2">
+                <Border Width="82" Height="82" CornerRadius="24" Background="#8B5CF6" BorderBrush="#A78BFA" BorderThickness="2">
                     <Grid>
                         <Ellipse Fill="#C4B5FD" Opacity="0.25" />
                         <Path Data="M12,22 L34,6 L56,22 L44,22 L44,50 L24,50 L24,22 Z" Fill="White" Stretch="Uniform" />

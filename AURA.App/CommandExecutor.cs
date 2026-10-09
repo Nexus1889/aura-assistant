@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 
 namespace AURA.App;
 
@@ -49,7 +48,7 @@ public static class CommandExecutor
         if (command.Contains("загрузки", StringComparison.OrdinalIgnoreCase)
             || command.Contains("downloads", StringComparison.OrdinalIgnoreCase))
         {
-            OpenFolder(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\Downloads");
+            OpenFolder(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\Downloads");
             return "Открываю папку Загрузки.";
         }
 

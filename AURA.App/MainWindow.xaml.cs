@@ -18,8 +18,9 @@ public partial class MainWindow : Window
         InitializeComponent();
         CommandLogList.ItemsSource = log;
         AddLog("Приложение запущено.");
-        AddLog("Готов к ��окальному управлению Windows.");
+        AddLog("Готов к локальному управлению Windows.");
         SetListeningState(false);
+        CommandInput.Text = "открыть браузер";
     }
 
     private void ToggleListening_Click(object sender, RoutedEventArgs e)
@@ -37,6 +38,7 @@ public partial class MainWindow : Window
         try
         {
             Process.Start(new ProcessStartInfo("ms-settings:") { UseShellExecute = true });
+            AddLog("Панель настроек Windows открыта.");
         }
         catch (Exception ex)
         {
@@ -61,8 +63,7 @@ public partial class MainWindow : Window
 
     private void RunCustomCommand_Click(object sender, RoutedEventArgs e)
     {
-        var command = CommandInput.Text;
-        ExecuteCommand(command);
+        ExecuteCommand(CommandInput.Text);
     }
 
     private void CommandInput_KeyDown(object sender, KeyEventArgs e)
@@ -73,16 +74,34 @@ public partial class MainWindow : Window
         }
     }
 
-    private void ExecuteCommand(string rawCommand)
+    private void ExecuteCommand(string? rawCommand)
     {
-        var result = CommandExecutor.Execute(rawCommand);
+        var command = rawCommand ?? string.Empty;
+        var result = CommandExecutor.Execute(command);
+
         AddLog(result);
-        StatusText.Text = result;
 
         if (result.Contains("рабочий режим", StringComparison.OrdinalIgnoreCase))
         {
             StatusText.Text = "Рабочий режим";
+            return;
         }
+
+        if (result.Contains("открываю", StringComparison.OrdinalIgnoreCase)
+            || result.Contains("запускаю", StringComparison.OrdinalIgnoreCase)
+            || result.Contains("создаю", StringComparison.OrdinalIgnoreCase))
+        {
+            StatusText.Text = "Выполняю";
+            return;
+        }
+
+        if (result.Contains("не распознана", StringComparison.OrdinalIgnoreCase))
+        {
+            StatusText.Text = "Команда неизвестна";
+            return;
+        }
+
+        StatusText.Text = "Готово";
     }
 
     private void SetListeningState(bool listening)
