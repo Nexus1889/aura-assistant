@@ -1,6 +1,0 @@
-git init
-git add .
-git commit -m "Initial commit: Full AURA documentation setup"
-git branch -M main
-git remote add origin https://github.com/Nexus1889/aura-docs.git
-git push -u origin main
