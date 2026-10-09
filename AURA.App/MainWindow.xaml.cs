@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace AURA.App;
@@ -17,7 +18,7 @@ public partial class MainWindow : Window
         InitializeComponent();
         CommandLogList.ItemsSource = log;
         AddLog("Приложение запущено.");
-        AddLog("Готов к локальному управлению Windows.");
+        AddLog("Готов к ��окальному управлению Windows.");
         SetListeningState(false);
     }
 
@@ -45,35 +46,43 @@ public partial class MainWindow : Window
 
     private void RunBrowserCommand_Click(object sender, RoutedEventArgs e)
     {
-        AddLog("Выполняю команду: открыть браузер.");
-
-        try
-        {
-            Process.Start(new ProcessStartInfo("https://www.google.com") { UseShellExecute = true });
-        }
-        catch (Exception ex)
-        {
-            AddLog($"Ошибка открытия браузера: {ex.Message}");
-        }
+        ExecuteCommand("открыть браузер");
     }
 
     private void RunWorkModeCommand_Click(object sender, RoutedEventArgs e)
     {
-        AddLog("Запускаю рабочий режим AURA.");
-        StatusText.Text = "Рабочий режим";
+        ExecuteCommand("рабочий режим");
     }
 
     private void CreateNoteCommand_Click(object sender, RoutedEventArgs e)
     {
-        AddLog("Создаю заметку и сохраняю в рабочую папку.");
+        ExecuteCommand("создать заметку");
+    }
 
-        var notesFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "AURA");
-        Directory.CreateDirectory(notesFolder);
+    private void RunCustomCommand_Click(object sender, RoutedEventArgs e)
+    {
+        var command = CommandInput.Text;
+        ExecuteCommand(command);
+    }
 
-        var filePath = Path.Combine(notesFolder, $"note-{DateTime.Now:yyyyMMdd-HHmmss}.txt");
-        File.WriteAllText(filePath, $"Запись AURA от {DateTime.Now:yyyy-MM-dd HH:mm:ss}{Environment.NewLine}... ");
+    private void CommandInput_KeyDown(object sender, KeyEventArgs e)
+    {
+        if (e.Key == Key.Enter)
+        {
+            ExecuteCommand(CommandInput.Text);
+        }
+    }
 
-        AddLog($"Заметка сохранена: {filePath}");
+    private void ExecuteCommand(string rawCommand)
+    {
+        var result = CommandExecutor.Execute(rawCommand);
+        AddLog(result);
+        StatusText.Text = result;
+
+        if (result.Contains("рабочий режим", StringComparison.OrdinalIgnoreCase))
+        {
+            StatusText.Text = "Рабочий режим";
+        }
     }
 
     private void SetListeningState(bool listening)

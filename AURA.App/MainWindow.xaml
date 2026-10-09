@@ -145,9 +145,16 @@
 
                     <Border Margin="0,18,0,0" Padding="18" CornerRadius="24" Background="#111827" BorderBrush="#1F2937" BorderThickness="1">
                         <StackPanel>
-                            <TextBlock FontSize="20" FontWeight="SemiBold" Text="Помощь" />
-                            <TextBlock Margin="0,10,0,0" Foreground="#CBD5E1" Text="Пример команды: 'Аура, открой Telegram'" />
-                            <TextBlock Margin="0,8,0,0" Foreground="#CBD5E1" Text="Чтобы запустить задачу — нажмите кнопку прослушивания." />
+                            <TextBlock FontSize="20" FontWeight="SemiBold" Text="Командная строка" />
+                            <TextBox x:Name="CommandInput"
+                                     Margin="0,10,0,8"
+                                     Height="36"
+                                     Background="#0B1220"
+                                     Foreground="#E2E8F0"
+                                     BorderBrush="#334155"
+                                     Text="открыть браузер"
+                                     KeyDown="CommandInput_KeyDown" />
+                            <Button Height="40" Background="#8B5CF6" Content="Выполнить" Click="RunCustomCommand_Click" />
                         </StackPanel>
                     </Border>
                 </StackPanel>
