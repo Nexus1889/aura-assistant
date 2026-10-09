@@ -8,6 +8,17 @@
     <EnableWindowsTargeting>true</EnableWindowsTargeting>
     <RootNamespace>AURA.App</RootNamespace>
     <AssemblyName>AURA Assistant</AssemblyName>
+    <AssemblyVersion>0.4.4.0</AssemblyVersion>
+    <FileVersion>0.4.4.0</FileVersion>
+    <ProductVersion>0.4.4</ProductVersion>
+    <Version>0.4.4</Version>
+    <Title>AURA Assistant</Title>
+    <Description>Intelligent voice assistant for Windows with visual programming</Description>
+    <Company>Nexus1889</Company>
+    <Product>AURA Assistant</Product>
+    <Authors>Nexus1889</Authors>
+    <RepositoryUrl>https://github.com/Nexus1889/aura-assistant</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
   <ItemGroup>
