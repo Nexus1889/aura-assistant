@@ -1,52 +1,67 @@
 <div align="center">
-  
-  # 🟣 AURA Assistant
-  ### Интеллектуальный голосовой ассистент для Windows с визуальным программированием
-  
-  <a href="https://github.com/Nexus1889/aura-assistant/releases"><img src="https://img.shields.io/badge/version-0.4.4-8b5cf6.svg" alt="Version"></a>
-  <a href="https://www.microsoft.com/windows/"><img src="https://img.shields.io/badge/platform-Windows%2010%2F11-0078D6.svg" alt="Platform"></a>
-  <a href="https://t.me/aura_support"><img src="https://img.shields.io/badge/support-Telegram-26A5E4.svg" alt="Telegram"></a>
 
-  <br><br>
-  <a href="INSTALL.md"><strong>📦 Установка</strong></a> • 
-  <a href="CUSTOM-COMMANDS.md"><strong>🧩 Конструктор</strong></a> • 
-  <a href="COMMANDS.md"><strong>🎤 Команды</strong></a> • 
-  <a href="FAQ.md"><strong>❓ FAQ</strong></a>
+# 🟣 AURA Assistant
+
+### Интеллектуальный голосовой ассистент для Windows с визуальным программированием
+
+**281 команда · Визуальные графы · ИИ-диалоги · 3D-аватар · Полностью бесплатно**
+
+[![Platform](https://img.shields.io/badge/Platform-Windows%2010%2F11-0078D6?style=for-the-badge&logo=windows)](https://github.com/Nexus1889/aura-assistant/releases)
+[![Version](https://img.shields.io/badge/Version-0.4.4-8b5cf6?style=for-the-badge)](https://github.com/Nexus1889/aura-assistant/releases/tag/v0.4.4)
+[![License](https://img.shields.io/badge/License-100%25%20Free-10b981?style=for-the-badge)](https://github.com/Nexus1889/aura-assistant)
+
+[📦 Скачать](https://github.com/Nexus1889/aura-assistant/releases/download/v0.4.4/AURA-Assistant-Setup-x64.exe) · 
+[⚙️ Установка](./INSTALL.md) · 
+[ Настройки](./SETTINGS.md) · 
+[ Конструктор](./CUSTOM-COMMANDS.md) · 
+[🎤 Команды](./COMMANDS.md) · 
+[ FAQ](./FAQ.md)
+
 </div>
 
 ---
 
----
 ## 💡 Что такое AURA?
-**AURA** — это настольное приложение для Windows 10/11. Оно открывает программы, управляет окнами, звуком, файлами, запускает твои сценарии и отвечает на вопросы через ИИ.
 
-> **Главная фишка:** Базовые команды работают локально и бесплатно. Интернет нужен только для ИИ-диалогов и распознавания речи.
+**AURA** — это бесплатный настольный ассистент для Windows 10/11, который превращает голос в действия. Он управляет системой, запускает программы, создаёт документы, отвечает на вопросы через ИИ и позволяет строить собственные сценарии автоматизации **без единой строчки кода**.
 
----
-## 🚀 Возможности
-- 🎙️ **280+ команд:** управление системой голосом.
-- 🧩 **Визуальный конструктор:** создавай сценарии без кода (графы).
-- 🧠 **Гибридный ИИ:** умная маршрутизация (экономит лимиты).
-- 🔒 **Безопасность:** защита от опасных действий без подтверждения.
+> 🎯 **Главная фишка:** Всё работает локально и бесплатно. Никаких подписок, лимитов и скрытых платежей.
 
 ---
-## ⚡ Быстрый старт
-1. Скачай установщик с сайта.
-2. При SmartScreen нажми **Подробнее** → **Всё равно запустить**.
-3. Разреши доступ к микрофону и войди через Telegram/VK ID.
-4. Скажи: *"Аура, открой браузер"*.
 
----
-## 📚 Документация
-| Файл | Описание |
+## ✨ Возможности
+
+| Категория | Что умеет |
 | --- | --- |
-| [`INSTALL.md`](INSTALL.md) | Установка и обход SmartScreen |
-| [`SETTINGS.md`](SETTINGS.md) | Все настройки приложения |
-| [`CUSTOM-COMMANDS.md`](CUSTOM-COMMANDS.md) | Конструктор сценариев + 10 шаблонов |
-| [`COMMANDS.md`](COMMANDS.md) | Каталог голосовых команд |
-| [`FAQ.md`](FAQ.md) | Частые вопросы |
+| 🎙️ **Голос** | 281 системная команда из коробки + распознавание речи (Whisper) |
+|  **Конструктор** | Визуальные графы: перетаскивай блоки и соединяй стрелками |
+|  **ИИ-диалоги** | Задавай вопросы, генерируй тексты, код, идеи, резюме |
+|  **Документы** | Создание и редактирование Word, Excel, PowerPoint голосом |
+| 👁️ **Vision** | Анализ экрана и управление интерфейсом |
+| 🤖 **Agent** | Многошаговые автономные задачи |
+|  **3D-аватар** | VRM-модели с эмоциями и анимациями |
+| 🎨 **AuraBubble** | Компактный плавающий островок со статусом |
+| 🔒 **Приватность** | API-ключи и настройки хранятся локально |
 
 ---
-<div align="center">
-  <sub>Создано с любовью к автоматизации. © 2026 AURA Team (Nexus1889).</sub>
-</div>
+
+## 🚀 Быстрый старт
+
+### 1. Скачай установщик
+👉 [**AURA-Assistant-Setup-x64.exe**](https://github.com/Nexus1889/aura-assistant/releases/download/v0.4.4/AURA-Assistant-Setup-x64.exe) (~287 МБ)
+
+### 2. Обойди SmartScreen
+При запуске Windows может показать предупреждение:
+- Нажми **«Подробнее»** → **«Всё равно запустить»**
+- Это стандартно для независимых проектов без платной подписи
+
+### 3. Настрой и говори
+- Разрешите доступ к микрофону
+- Войдите через Telegram или VK ID
+- Скажите: **«Аура, открой браузер»**
+
+Подробная инструкция: [INSTALL.md](./INSTALL.md)
+
+---
+
+## 🧠 Как это работает
